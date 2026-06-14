@@ -8,7 +8,7 @@
 */
 
 const CONFIG = {
-  APPS_SCRIPT_URL: "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE",
+  APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbxh9g6gmTlj_pcIFwNtDHyLMNTjVH92WQq6JBNU23Qhq7EP3DpU3YoHAQYZ3J8gcKRX/exec",
   REFRESH_SECONDS: 60,
   USE_DEMO_DATA_WHEN_NOT_CONFIGURED: true,
   STORAGE_KEY: "alsaleh_wc_2026_previous_ranks_v2"
