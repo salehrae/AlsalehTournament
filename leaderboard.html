@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alsaleh World Cup Tournament 2026 | Live Leaderboard</title>
+  <meta name="description" content="Live leaderboard for Alsaleh World Cup Tournament 2026." />
+  <link rel="preconnect" href="https://script.google.com" />
+  <link rel="preconnect" href="https://script.googleusercontent.com" />
+  <style>
+    :root{
+      --navy:#06182f; --navy2:#09264c; --navy3:#020814;
+      --gold:#d9aa3a; --gold2:#f8db7f; --gold3:#8a611a;
+      --red:#ce1126; --green:#007a3d; --black:#101827; --white:#fff;
+      --muted:#aebfd7; --line:rgba(248,219,127,.28); --card:rgba(5,18,37,.84);
+      --blue:#2f80ed; --cyan:#38bdf8; --shadow:0 22px 70px rgba(0,0,0,.36);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:radial-gradient(circle at top,#164374 0%,var(--navy) 34%,var(--navy3) 100%);color:var(--white);min-height:100vh}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 15% 10%,rgba(248,219,127,.18),transparent 24%),radial-gradient(circle at 85% 8%,rgba(248,219,127,.13),transparent 22%),linear-gradient(130deg,rgba(206,17,38,.13),transparent 28%,rgba(0,122,61,.13) 72%,transparent)}
+    body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.2;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:46px 46px;mask-image:linear-gradient(to bottom,transparent,black 18%,transparent 94%)}
+    .wrap{width:min(1220px,94vw);margin:auto;padding:22px 0 56px;position:relative;z-index:1}
+    header{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;padding:18px 0 24px}
+    .brand{display:flex;gap:16px;align-items:center}.logo{width:78px;height:78px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(from 300deg,var(--red) 0 25%,var(--green) 25% 55%,var(--black) 55% 85%,var(--white) 85% 100%);box-shadow:0 0 0 4px rgba(255,255,255,.09),var(--shadow)}
+    .logo span{width:59px;height:59px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(180deg,#0c2446,#061326);color:var(--gold2);font-size:30px;border:1px solid rgba(248,219,127,.3)}
+    h1{margin:0;font-size:clamp(26px,5.2vw,58px);line-height:.95;letter-spacing:.02em;text-transform:uppercase}.gold{color:var(--gold2);text-shadow:0 2px 16px rgba(217,170,58,.28)}
+    .sub{margin:9px 0 0;color:var(--muted);font-weight:800;letter-spacing:.13em;text-transform:uppercase;font-size:13px}.status{justify-self:end;background:rgba(255,255,255,.08);border:1px solid var(--line);padding:10px 14px;border-radius:999px;color:var(--muted);font-size:13px;box-shadow:var(--shadow)}
+    .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#22c55e;margin-inline-end:8px;box-shadow:0 0 12px #22c55e}.dot.warn{background:#f59e0b;box-shadow:0 0 12px #f59e0b}.dot.bad{background:#ef4444;box-shadow:0 0 12px #ef4444}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}.kpi{padding:16px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.035));box-shadow:var(--shadow)}.kpi b{display:block;font-size:clamp(24px,3.4vw,36px);color:var(--gold2);line-height:1}.kpi span{display:block;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-top:8px}
+    .grid{display:grid;grid-template-columns:1.08fr .92fr;gap:18px}.panel{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);backdrop-filter:blur(10px);overflow:hidden}.panel h2{margin:0;padding:18px 20px;border-bottom:1px solid var(--line);font-size:20px;letter-spacing:.01em}
+    .top3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:20px}.podium{position:relative;padding:18px;border-radius:20px;background:linear-gradient(160deg,rgba(217,170,58,.24),rgba(255,255,255,.04));border:1px solid var(--line);min-height:154px;overflow:hidden}.podium::after{content:"";position:absolute;inset:auto -40px -70px auto;width:130px;height:130px;border-radius:50%;background:rgba(248,219,127,.08)}.podium.first{transform:translateY(-9px);background:linear-gradient(160deg,rgba(248,219,127,.33),rgba(255,255,255,.04))}.medal{font-size:36px}.podium .name{font-size:20px;font-weight:950;margin:10px 0 5px}.score{font-size:34px;font-weight:950;color:var(--gold2);line-height:1}.small{color:var(--muted);font-size:13px}.movement{font-weight:950}.up{color:#22c55e}.down{color:#ef4444}.same{color:#94a3b8}.new{color:var(--gold2)}
+    .family-bars{padding:20px;display:grid;gap:14px}.bar-row{display:grid;grid-template-columns:145px 1fr 84px;gap:12px;align-items:center}.bar-title{font-weight:850}.bar{height:18px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden;border:1px solid rgba(255,255,255,.07)}.bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:999px}.bar-value{text-align:right;color:var(--gold2);font-weight:950}
+    .toolbar{display:flex;gap:10px;padding:14px 20px;flex-wrap:wrap;align-items:center}.toolbar input,.toolbar select{background:#061326;color:var(--white);border:1px solid var(--line);border-radius:13px;padding:12px 13px;min-width:190px;outline:none}.toolbar input:focus,.toolbar select:focus{box-shadow:0 0 0 3px rgba(248,219,127,.14)}.toolbar button{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#2b1a00;border:0;border-radius:13px;padding:12px 16px;font-weight:950;cursor:pointer}.toolbar button:active{transform:translateY(1px)}
+    .table-wrap{overflow:auto;padding:0 20px 20px}table{width:100%;border-collapse:separate;border-spacing:0 8px;min-width:760px}th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em;text-align:left;padding:8px 12px;white-space:nowrap}td{background:rgba(255,255,255,.06);padding:14px 12px;border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07)}td:first-child{border-radius:14px 0 0 14px;border-left:1px solid rgba(255,255,255,.07)}td:last-child{border-radius:0 14px 14px 0;border-right:1px solid rgba(255,255,255,.07)}.rank{font-weight:950;color:var(--gold2)}.name-cell{font-weight:900}.pill{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:999px;padding:5px 9px;color:var(--muted);font-size:12px;white-space:nowrap}.details{color:var(--gold2);cursor:pointer;text-decoration:underline;text-underline-offset:3px}.num{font-weight:900}.cards{padding:20px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.match-card{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09);border-radius:17px;padding:14px}.match-card .teams{font-weight:950}.match-card .pts{float:right;color:var(--gold2);font-weight:950;font-size:20px}.match-card .player{color:var(--muted);margin-top:4px;font-size:13px}.match-card .breakdown{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.chip{font-size:12px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.06);padding:5px 8px;border-radius:999px;color:var(--muted)}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.68);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}.modal.open{display:flex}.modal-box{width:min(980px,96vw);max-height:86vh;overflow:auto;background:#061326;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}.modal-head{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line)}.modal-head h2{padding:0;border:0}.close{background:transparent;color:white;border:1px solid var(--line);border-radius:12px;padding:9px 12px;cursor:pointer}.loading{padding:24px;color:var(--muted)}.error{margin:20px;padding:16px;border-radius:16px;background:rgba(239,68,68,.13);border:1px solid rgba(239,68,68,.35);color:#fecaca;line-height:1.5}.notice{margin:0 20px 20px;padding:14px 16px;border:1px solid rgba(56,189,248,.35);background:rgba(56,189,248,.10);border-radius:16px;color:#bae6fd}
+    footer{margin-top:24px;color:var(--muted);text-align:center;font-size:13px}
+    @media(max-width:860px){header{grid-template-columns:1fr}.status{justify-self:start}.grid,.kpis,.cards{grid-template-columns:1fr}.top3{grid-template-columns:1fr}.podium.first{transform:none}.bar-row{grid-template-columns:105px 1fr 64px}.wrap{width:96vw}.sub{letter-spacing:.07em}.brand{align-items:flex-start}.logo{width:62px;height:62px}.logo span{width:48px;height:48px;font-size:24px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo"><span>🏆</span></div>
+        <div>
+          <h1><span class="gold">Alsaleh</span><br>World Cup 2026</h1>
+          <p class="sub">Family Soccer Fantasy Tournament • Kuwait 🇰🇼</p>
+        </div>
+      </div>
+      <div class="status"><span class="dot warn" id="statusDot"></span><span id="statusText">Waiting for setup…</span></div>
+    </header>
+
+    <section class="kpis" id="kpis"></section>
+
+    <section class="grid">
+      <section class="panel">
+        <h2>🥇 Gold / Silver / Bronze Top 3</h2>
+        <div class="top3" id="top3"><div class="loading">Loading top players…</div></div>
+      </section>
+      <section class="panel">
+        <h2>👨‍👩‍👧‍👦 Family Leaderboard</h2>
+        <div class="family-bars" id="familyBars"><div class="loading">Loading families…</div></div>
+      </section>
+    </section>
+
+    <section class="panel" style="margin-top:18px">
+      <h2>🏆 Live Ranking Table</h2>
+      <div class="toolbar">
+        <input id="search" placeholder="Search participant…" autocomplete="off" />
+        <select id="familyFilter"><option value="all">All families</option></select>
+        <button id="refreshBtn">Refresh Scores</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Rank</th><th>Movement</th><th>Participant</th><th>Family</th><th>Total Points</th><th>Exact Scores</th><th>Correct Results</th><th>Match Points</th></tr></thead>
+          <tbody id="leaderboardBody"><tr><td colspan="8" class="loading">Loading leaderboard…</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:18px">
+      <h2>⚽ Latest Match-by-Match Points</h2>
+      <div class="cards" id="latestMatches"><div class="loading">Loading match points…</div></div>
+    </section>
+
+    <footer>Alsaleh World Cup Tournament 2026 • Live Google Sheets Leaderboard</footer>
+  </main>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-box">
+      <div class="modal-head"><h2 id="modalTitle">Match-by-match points</h2><button class="close" id="closeModal">Close</button></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Match</th><th>Prediction</th><th>Actual</th><th>Result</th><th>Home</th><th>Away</th><th>Diff</th><th>Total</th></tr></thead>
+          <tbody id="modalBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="scores.js"></script>
+</body>
+</html>
